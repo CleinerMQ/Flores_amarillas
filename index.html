@@ -12,38 +12,38 @@
 
     <div id="youtube-player"></div>
 
-<div class="flower">
-    <div class="text-above"><h3>Te Amo</h3></div>
-    <div class="mid">
+    <div class="flower">
+        <div class="text-above"><h3>Te Amo</h3></div>
+        <div class="mid">
+        </div>
+        <div class="Petal1 p1">
+        </div>
+        <div class="Petal1 p2">
+        </div>
+        <div class="Petal1 p3">
+        </div>
+        <div class="Petal1 p4">
+        </div>
+        <div class="Petal2 p1">
+        </div>
+        <div class="Petal2 p2">
+        </div>
+        <div class="Petal2 p3">
+        </div>
+        <div class="Petal2 p4">
+        </div>
+        <div class="Petal3 p1">
+        </div>
+        <div class="Petal3 p2">
+        </div>
+        <div class="Petal3 p3">
+        </div>
+        <div class="Petal3 p4">
+        </div>
+        <div class="text-below"><h3>Amor</h3> </div>
     </div>
-    <div class="Petal1 p1">
-    </div>
-    <div class="Petal1 p2">
-    </div>
-    <div class="Petal1 p3">
-    </div>
-    <div class="Petal1 p4">
-    </div>
-    <div class="Petal2 p1">
-    </div>
-    <div class="Petal2 p2">
-    </div>
-    <div class="Petal2 p3">
-    </div>
-    <div class="Petal2 p4">
-    </div>
-    <div class="Petal3 p1">
-    </div>
-    <div class="Petal3 p2">
-    </div>
-    <div class="Petal3 p3">
-    </div>
-    <div class="Petal3 p4">
-    </div>
-    <div class="text-below"><h3>Victoria❤️</h3> </div>
-  </div>
-    
-   <script>
+
+    <script>
         var player;
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('youtube-player', {
@@ -54,8 +54,9 @@
                     autoplay: 1, // Reproducción automática
                     controls: 0, // Oculta los controles del reproductor
                     showinfo: 0, // Oculta la información del video
-                    loop: 1, // Repite la música
-                    playlist: 'S7gMzYqXIZc', // Establece la misma ID del video como una lista de reproducción
+                    modestbranding: 1, // Oculta el logo de YouTube
+                    rel: 0, // Evita mostrar videos relacionados al final
+                    enablejsapi: 1, // Habilita la API de JavaScript de YouTube
                     start: 0, // Comienza desde el principio
                 },
                 events: {
