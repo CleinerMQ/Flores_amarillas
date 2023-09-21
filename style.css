@@ -1,11 +1,23 @@
 body {
-  background-color: #000;
   margin: 0;
   padding: 0;
-  height: 100vh; /* Asegura que el cuerpo ocupe toda la altura de la ventana */
+  background: #35393b00;
+  overflow: hidden;
+  height: 100vh; 
   display: flex;
-  align-items: center; /* Centra verticalmente los elementos en el cuerpo */
-  justify-content: center; /* Centra horizontalmente los elementos en el cuerpo */
+  align-items: center; 
+  justify-content: center;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transition: background-color 1s;
+  background-color: transparent; /* Fondo inicial */
 }
 .flower {
   height: 200px;
@@ -16,8 +28,7 @@ body {
   align-items: center;
   justify-content: center;
 
-  position: relative;
-  background-color: #000; /* Fondo negro para toda la página */
+
 
   /* Agrega una animación de pulsación */
   animation: pulsate 2s infinite;
