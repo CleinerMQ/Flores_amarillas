@@ -4,15 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="Stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
     <script src="https://www.youtube.com/iframe_api"></script>
-    <title>Flower</title>
+    <title>Reproducir música y cambiar el fondo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
 </head>
 <body>
-
     <div id="youtube-player"></div>
-
-    <div class="flower">
+    <div class="background"></div>
+<div class="flower">
         <div class="text-above"><h3>Te Amo</h3></div>
         <div class="mid">
         </div>
@@ -41,23 +47,24 @@
         <div class="Petal3 p4">
         </div>
         <div class="text-below"><h3>Amor❤️</h3> </div>
-    </div>
-
+</div>
     <script>
         var player;
+        var isPlaying = false;
+
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('youtube-player', {
-                height: '0', // Establece la altura en 0 para ocultar el reproductor
-                width: '0',  // Establece el ancho en 0 para ocultar el reproductor
-                videoId: 'S7gMzYqXIZc', // ID del video de YouTube
+                height: '0',
+                width: '0',
+                videoId: 'S7gMzYqXIZc',
                 playerVars: {
-                    autoplay: 1, // Reproducción automática
-                    controls: 0, // Oculta los controles del reproductor
-                    showinfo: 0, // Oculta la información del video
-                    modestbranding: 1, // Oculta el logo de YouTube
-                    rel: 0, // Evita mostrar videos relacionados al final
-                    enablejsapi: 1, // Habilita la API de JavaScript de YouTube
-                    start: 0, // Comienza desde el principio
+                    autoplay: 0,
+                    controls: 0,
+                    showinfo: 0,
+                    modestbranding: 1,
+                    rel: 0,
+                    enablejsapi: 1,
+                    start: 0,
                 },
                 events: {
                     'onReady': onPlayerReady,
@@ -66,8 +73,29 @@
         }
 
         function onPlayerReady(event) {
-            event.target.setVolume(100); // Establece el volumen al 100% (puedes ajustarlo)
-            event.target.playVideo(); // Inicia la reproducción
+            // Pausar el video en espera de la interacción del usuario
+            event.target.pauseVideo();
+
+            // Agregar un event listener para hacer clic en cualquier parte de la pantalla
+            document.body.addEventListener('click', function() {
+                if (!isPlaying) {
+                    event.target.playVideo();
+                    isPlaying = true;
+                    changeBackground();
+                }
+            });
+        }
+
+        function changeBackground() {
+            // Cambiar el fondo con la música (aquí puedes personalizar el fondo)
+            var background = document.querySelector('.background');
+            var colors = ['#FF5733', '#FFC300', '#33FF57', '#339CFF'];
+            var currentIndex = 0;
+
+            setInterval(function() {
+                background.style.backgroundColor = colors[currentIndex];
+                currentIndex = (currentIndex + 1) % colors.length;
+            }, 1000); // Cambiar el color cada segundo
         }
     </script>
 </body>
