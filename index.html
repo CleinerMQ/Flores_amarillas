@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="Stylesheet" href="style.css">
+    <script src="https://www.youtube.com/iframe_api"></script>
     <title>Flower</title>
 </head>
 <body>
 
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/S7gMzYqXIZc" frameborder="0" allowfullscreen></iframe>
-
+    <div id="youtube-player"></div>
 
 <div class="flower">
     <div class="text-above">Cleiner</div>
@@ -42,5 +42,32 @@
     </div>
     <div class="text-below">Victoria </div>
   </div>
+    
+   <script>
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('youtube-player', {
+                height: '0', // Establece la altura en 0 para ocultar el reproductor
+                width: '0',  // Establece el ancho en 0 para ocultar el reproductor
+                videoId: 'S7gMzYqXIZc', // ID del video de YouTube
+                playerVars: {
+                    autoplay: 1, // Reproducción automática
+                    controls: 0, // Oculta los controles del reproductor
+                    showinfo: 0, // Oculta la información del video
+                    loop: 1, // Repite la música
+                    playlist: 'S7gMzYqXIZc', // Establece la misma ID del video como una lista de reproducción
+                    start: 0, // Comienza desde el principio
+                },
+                events: {
+                    'onReady': onPlayerReady,
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            event.target.setVolume(100); // Establece el volumen al 100% (puedes ajustarlo)
+            event.target.playVideo(); // Inicia la reproducción
+        }
+    </script>
 </body>
 </html>
